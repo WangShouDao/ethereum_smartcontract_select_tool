@@ -7,7 +7,7 @@ import pandas as pd
 # 读取日期数据
 def read_data(filename):
     contracts_date = {}
-    with open('contractVf.txt', 'r+') as f:
+    with open(filename, 'r+') as f:
         line = f.read().strip().split('\n')
         for items in line:
             items = eval(items)
