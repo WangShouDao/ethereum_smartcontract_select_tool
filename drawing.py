@@ -90,12 +90,25 @@ def draw_plot2(filename):
 # 合约的使用次数和数量的点图
 def draw_plot3(filename):
     x, y = read_data1(filename)
-    x, y = x[12:200], y[12:200]
     plt.scatter(x,y,s=3,color='r',label='txCount-num')
     # plt.scatter(y,x,linewidth=1,color='green',s=1,label='num-txCount')
     plt.title(u'使用次数与合约数量的关系',fontproperties='SimHei')
     plt.xlabel("smart contrast's times of used")
     plt.ylabel("smart contract's number")
+    plt.grid(True, linestyle='--', linewidth=1, c='gray')
+    plt.show()
+
+def draw_plot4(filename):
+    x, y = read_data1(filename)
+    for i in range(1, len(y)):
+        y[i] = y[i-1] + y[i]
+    # print(y)
+    x, y = x[10:2400], y[10:2400]
+    plt.scatter(x, y, s=2, color='r', label='txCount-num')
+    # plt.scatter(y,x,linewidth=1,color='green',s=1,label='num-txCount')
+    plt.title(u'使用次数与合约总数量的关系', fontproperties='SimHei')
+    plt.xlabel("smart contrast's times of used")
+    plt.ylabel("smart contract's sum of number")
     plt.grid(True, linestyle='--', linewidth=1, c='gray')
     plt.show()
 

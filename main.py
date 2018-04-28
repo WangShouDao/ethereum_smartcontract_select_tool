@@ -26,7 +26,8 @@ if __name__=='__main__':
     # drawing.draw_plot1(content_filename)
     # 总的合约数量的折线图
     # drawing.draw_plot2(content_filename)
-    drawing.draw_plot3(content_filename)
+    # drawing.draw_plot3(content_filename)
+    drawing.draw_plot4(content_filename)
     # drawing.draw_scatter(content_filename)
     # 存储合约
     # contract_filename = 'txt_file/most_use_contract.txt'
