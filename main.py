@@ -26,10 +26,11 @@ if __name__=='__main__':
     # drawing.draw_plot1(content_filename)
     # 总的合约数量的折线图
     # drawing.draw_plot2(content_filename)
+    drawing.draw_plot3(content_filename)
     # drawing.draw_scatter(content_filename)
     # 存储合约
-    contract_filename = 'txt_file/most_use_contract.txt'
+    # contract_filename = 'txt_file/most_use_contract.txt'
     # 新建存储合约的txt文件
     # mknod(contract_filename)
     # 爬取使用次数最多的合约信息
-    spider.spider_contract.find_most_use(content_filename, contract_filename)
+    # spider.spider_contract.find_most_use(content_filename, contract_filename)

@@ -30,6 +30,23 @@ def read_data(filename):
         temp2.append(contracts_date1[i][1])
     return temp1, temp2
 
+def read_data1(filename):
+    txCount_num = {}
+    with open(filename, 'r') as f:
+        line = f.read().strip().split('\n')
+        for item in line:
+            item = eval(item)
+            if item['txCount'] not in txCount_num.keys():
+                txCount_num[item['txCount']] = 1
+            else:
+                txCount_num[item['txCount']] += 1
+    txCount_num = sorted([(int(key), txCount_num[key]) for key in sorted(txCount_num.keys())])
+    temp1,temp2 = [], []
+    for i in range(len(txCount_num)):
+        temp1.append(int(txCount_num[i][0]))
+        temp2.append(txCount_num[i][1])
+    return temp1, temp2
+
 # 画出折线图
 def draw_plot1(filename):
     x, y =read_data(filename)
@@ -67,6 +84,18 @@ def draw_plot2(filename):
     plt.title(u"累计创建的合约数",fontproperties='SimHei')
     plt.xlabel('Date')
     plt.ylabel('Contracts Number')
+    plt.grid(True, linestyle='--', linewidth=1, c='gray')
+    plt.show()
+
+# 合约的使用次数和数量的点图
+def draw_plot3(filename):
+    x, y = read_data1(filename)
+    x, y = x[12:200], y[12:200]
+    plt.scatter(x,y,s=3,color='r',label='txCount-num')
+    # plt.scatter(y,x,linewidth=1,color='green',s=1,label='num-txCount')
+    plt.title(u'使用次数与合约数量的关系',fontproperties='SimHei')
+    plt.xlabel("smart contrast's times of used")
+    plt.ylabel("smart contract's number")
     plt.grid(True, linestyle='--', linewidth=1, c='gray')
     plt.show()
 
